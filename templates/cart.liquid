@@ -1,0 +1,99 @@
+<section class="cart-section">
+  <h1 class="cart-title">Your Cart</h1>
+
+  <form id="cart-form" action="{{ routes.cart_url }}" method="post" class="cart-form">
+    {% if cart.empty? %}
+      <div class="cart-empty">Pusto</div>
+    {% else %}
+      {% for item in cart.items %}
+        <div class="cart-item">
+          <div class="cart-empty-flex">
+            <img
+              width="150"
+              height="190"
+              class="cart-item-image"
+              loading="lazy"
+              src="{{ item.image | image_url }}"
+              alt="{{ item.title }}"
+            >
+            <div class="cart-item-flex">
+              <p class="cart-item-title">{{ item.title }}</p>
+              <span class="card__money"> {{ item.price | money }} </span>
+            </div>
+          </div>
+          <div class="quantity-flex-items">
+            <div class="quantity-flex">
+              <div class="quantity-wrapper">
+                <button
+                  type="button"
+                  class="quantity-btn quantity-btn-left decrease"
+                >
+                  -
+                </button>
+                <input
+                  id="quantity-input"
+                  type="text"
+
+                  name="updates[{{ item.id }}]"
+                  value="{{ item.quantity }}"
+                  min="1"
+                  class="quantity-input"
+                >
+                <button
+                  type="button"
+                  class="quantity-btn quantity-btn-right increase"
+                >
+                  +
+                </button>
+              </div>
+
+              <a href="{{ item.url_to_remove }}" class="cart-item-remove">
+                <img
+                  height="20"
+                  width="20"
+                  loading="lazy"
+                  src="{{'trash.svg'  |  asset_url }}"
+                  alt=""
+                >
+              </a>
+            </div>
+            <div>
+              <span class="cart-item-total">{{ item.final_line_price | money }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="cart-buttons-end">
+        <p>Subtotal {{ cart.total_price | money }}</p>
+        <div class="cart-buttons">
+          <input type="submit" value="Update cart" id="update-cart-button" class="cart-button">
+          <input type="submit" name="checkout" value="Checkout" class="checkout-button">
+        </div>
+      </div>
+    {% endif %}
+  </form>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const decreaseBtns = document.querySelectorAll('.decrease');
+    const increaseBtns = document.querySelectorAll('.increase');
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+
+    decreaseBtns.forEach((btn, index) => {
+      btn.addEventListener('click', function () {
+        let currentValue = parseInt(quantityInputs[index].value, 10);
+        if (currentValue > 1) {
+          quantityInputs[index].value = currentValue - 1;
+        }
+      });
+    });
+
+    increaseBtns.forEach((btn, index) => {
+      btn.addEventListener('click', function () {
+        let currentValue = parseInt(quantityInputs[index].value, 10);
+        quantityInputs[index].value = currentValue + 1;
+      });
+    });
+  });
+</script>

@@ -1,0 +1,24 @@
+<h1>adasd</h1>
+<form action="/search" method="get" class="search-form">
+  <input type="search" name="q" placeholder="Пошук товарів..." class="search-input">
+  <button type="submit">Пошук</button>
+</form>
+
+{% if search.results.size > 0 %}
+  <h2>Знайдено {{ search.results.size }} результатів для "{{ search.terms }}"</h2>
+  <div class="search-results">
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        <div class="product-card">
+          <a href="{{ item.url }}">
+            <img src="{{ item.featured_image | img_url: '300x300' }}" alt="{{ item.title }}">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.price | money }}</p>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p>Нічого не знайдено за запитом "{{ search.terms }}".</p>
+{% endif %}

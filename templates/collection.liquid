@@ -1,0 +1,15 @@
+<section>
+  {% paginate collection.products by 5 %}
+    <h1>
+      {{ collection.title }}
+    </h1>
+    <div class="collection__wrapper">
+      {% for product in collection.products %}
+        <a class="card__link" href="{{ product.url }}">
+          {% render 'product-card', product: product %}
+        </a>
+      {% endfor %}
+    </div>
+    {{ paginate | default_pagination }}
+  {% endpaginate %}
+</section>
