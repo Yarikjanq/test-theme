@@ -1,12 +1,14 @@
 <section class="card__collection">
-  <h1>{{ collections.frontpage.title }}</h1>
   <div>
-    <ul class="card__container">
-      {% for product in collections.frontpage.products | limit: 4 %}
-        <a class="card__link" href="{{ product.url }}">
-          {% render 'product-card', product: product %}
-        </a>
-      {% endfor %}
-    </ul>
+    <div>
+      <h1>{{ collections.frontpage.title }}</h1>
+      <ul class="card__container">
+        {% for product in collections.frontpage.products %}
+          <a class="card__link" href="{{ product.url }}">
+            {% render 'product-card', product: product %}
+          </a>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </section>

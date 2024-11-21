@@ -1,11 +1,7 @@
-<h1>adasd</h1>
-<form action="/search" method="get" class="search-form">
-  <input type="search" name="q" placeholder="Пошук товарів..." class="search-input">
-  <button type="submit">Пошук</button>
-</form>
+<h1>Search</h1>
 
 {% if search.results.size > 0 %}
-  <h2>Знайдено {{ search.results.size }} результатів для "{{ search.terms }}"</h2>
+  <h2>Found {{ search.results.size }} results for "{{ search.terms }}"</h2>
   <div class="search-results">
     {% for item in search.results %}
       {% if item.object_type == 'product' %}
@@ -20,5 +16,5 @@
     {% endfor %}
   </div>
 {% else %}
-  <p>Нічого не знайдено за запитом "{{ search.terms }}".</p>
+  <p>Nothing found for the query "{{ search.terms }}".</p>
 {% endif %}

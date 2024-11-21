@@ -1,9 +1,16 @@
 <header class="header">
   <div>
     <div class="header__items">
-      <form action="/search">
-        <input class="search-nav" placeholder="search" type="search">
+      <form action="/search" method="get" class="search-form ">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search for products..."
+          class="search-nav"
+          onkeyup="submitSearch(event)"
+        >
       </form>
+
       <h1 class="header__name">{{ shop.name }}</h1>
 
       <a class="header_cart" href="/cart">
@@ -26,3 +33,11 @@
     </ul>
   </div>
 </header>
+<script>
+  function submitSearch(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.querySelector('.search-form').submit();
+    }
+  }
+</script>

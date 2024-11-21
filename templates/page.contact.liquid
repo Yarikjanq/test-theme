@@ -1,0 +1,29 @@
+<div class="contact__form">
+  {% form 'contact' %}
+    {{ form.errors | default_errors }}
+    <div class="contact__form-title">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="">
+      <div class="contact__form-name">
+        <input class="contact__form-input" placeholder="Name" type="text" name="contact[first_name]" id="first-name">
+
+        <input class="contact__form-input" placeholder="Email" type="email" name="contact[email]" id="email">
+      </div>
+      <div class="contact__form--phone">
+        <input class="contact__form-input" placeholder="Phone number" type="tel" name="contact[phone]" id="phone">
+      </div>
+      <textarea
+        id="ContactForm-body"
+        class="text-area field__input"
+        placeholder="Comment"
+        name="contact[body]"
+        id="message"
+      ></textarea>
+
+      <div class="contact__button">
+        <button type="submit" class="button">Send</button>
+      </div>
+    </div>
+  {% endform %}
+</div>
