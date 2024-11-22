@@ -1,6 +1,6 @@
-<section>
-  {% paginate collection.products by 5 %}
-    <h1>
+<section class="collection_container">
+  {% paginate collection.products by 8 %}
+    <h1 class="collection_container-title">
       {{ collection.title }}
     </h1>
     <div class="collection__wrapper">
@@ -10,6 +10,45 @@
         </a>
       {% endfor %}
     </div>
-    {{ paginate | default_pagination }}
+    <div class="custom-pagination">
+      <ul class="custom-pagination-wrapper">
+        {% if paginate.previous %}
+          <li class="custom-pagination-previous">
+            <a href="{{ paginate.previous.url }}">
+              <img
+                class="custom-pagination-arrow-previous"
+                width="17px"
+                height="14px"
+                src="{{ 'right-arrow.png' | asset_url }}"
+                alt="Test Image"
+            ></a>
+          </li>
+        {% endif %}
+
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <li>
+              <a class="custom-pagination-url" href="{{ part.url }}">{{ part.title }}</a>
+            </li>
+          {% else %}
+            <li class="active">{{ part.title }}</li>
+          {% endif %}
+        {% endfor %}
+
+        {% if paginate.next %}
+          <li class="custom-pagination-next">
+            <a href="{{ paginate.next.url }}">
+              <img
+                class="custom-pagination-arrow-next"
+                width="17px"
+                height="14px"
+                src="{{ 'right-arrow.png' | asset_url }}"
+                alt="Test Image"
+              >
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
   {% endpaginate %}
 </section>
