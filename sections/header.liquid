@@ -7,7 +7,7 @@
           name="q"
           placeholder="Search for products..."
           class="search-nav"
-          onkeyup="submitSearch(event)"
+          onkeyup="submitSearch()"
         >
       </form>
 
@@ -35,9 +35,6 @@
 </header>
 <script>
   function submitSearch(event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      document.querySelector('.search-form').submit();
-    }
+    document.querySelector('.search-form').submit();
   }
 </script>
