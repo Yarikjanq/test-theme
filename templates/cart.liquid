@@ -66,7 +66,7 @@
       <div class="cart-buttons-end">
         <p>Subtotal {{ cart.total_price | money }}</p>
         <div class="cart-buttons">
-          <input type="submit" value="Update cart" id="update-cart-button" class="cart-button">
+          <input type="submit" style="display:none" value="Update cart" id="update-cart-button" class="cart-button">
           <input type="submit" name="checkout" value="Checkout" class="checkout-button">
         </div>
       </div>
@@ -79,20 +79,24 @@
     const decreaseBtns = document.querySelectorAll('.decrease');
     const increaseBtns = document.querySelectorAll('.increase');
     const quantityInputs = document.querySelectorAll('.quantity-input');
-
+    const updateCartButton = document.getElementById('update-cart-button');
     decreaseBtns.forEach((btn, index) => {
       btn.addEventListener('click', function () {
         let currentValue = parseInt(quantityInputs[index].value, 10);
+        console.log(currentValue);
+
         if (currentValue > 1) {
           quantityInputs[index].value = currentValue - 1;
+          updateCartButton.click();
         }
       });
     });
 
     increaseBtns.forEach((btn, index) => {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (event) {
         let currentValue = parseInt(quantityInputs[index].value, 10);
         quantityInputs[index].value = currentValue + 1;
+        updateCartButton.click();
       });
     });
   });
