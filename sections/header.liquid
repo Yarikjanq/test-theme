@@ -7,7 +7,7 @@
           name="q"
           placeholder="Search for products..."
           class="search-nav"
-          onkeyup="submitSearch()"
+          id="search-input"
         >
       </form>
 
@@ -34,7 +34,9 @@
   </div>
 </header>
 <script>
-  function submitSearch(event) {
-    document.querySelector('.search-form').submit();
-  }
+  document.getElementById('search-input').addEventListener('input', function () {
+    if (this.value.trim() !== '') {
+      document.querySelector('.search-form').submit();
+    }
+  });
 </script>
