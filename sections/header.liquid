@@ -33,6 +33,13 @@
     </ul>
   </div>
 </header>
+
+<style>
+  .header {
+    padding: 20px;
+    background: {{ section.settings.bg }}
+  }
+</style>
 <script>
   document.getElementById('search-input').addEventListener('input', function () {
     if (this.value.trim() !== '') {
@@ -40,3 +47,20 @@
     }
   });
 </script>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search form?"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color"
+    }
+  ]
+}
+{% endschema %}
