@@ -450,7 +450,7 @@ textarea {
   transform: translateY(-50%);
   width: 12px;
   height: 12px;
-  background-image: url('{{ "arrow-down-sign-to-navigate.png" | asset_url }}');
+  background: url("/assets/arrow-down-sign-to-navigate.png");
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
