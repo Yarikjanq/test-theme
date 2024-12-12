@@ -1,17 +1,23 @@
 <header class="header">
   <div>
     <div class="header__items">
-      <form action="/search" method="get" class="search-form ">
-        <input
-          type="search"
-          name="q"
-          placeholder="Search for products..."
-          class="search-nav"
-          id="search-input"
-        >
-      </form>
-
-      <h1 class="header__name">{{ shop.name }}</h1>
+      {% if section.settings.show_search %}
+        <form action="/search" method="get" class="search-form ">
+          <input
+            type="search"
+            name="q"
+            placeholder="Search for products..."
+            class="search-nav"
+            id="search-input"
+          >
+        </form>
+      {% endif %}
+      {% if section.settings.logo %}
+        <img src="{{ section.settings.logo | img_url: 'medium' }}" alt="Logo">
+      {% endif %}
+      {% if section.settings.show_shop_name %}
+        <h1>{{ section.settings.custom_shop_name | default: shop.name }}</h1>
+      {% endif %}
 
       <a class="header_cart" href="/cart">
         <img
@@ -60,6 +66,50 @@
       "type": "color",
       "id": "bg",
       "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_name",
+      "label": "Show shop name?"
+    },
+    {
+      "type": "text",
+      "id": "custom_shop_name",
+      "label": "Custom shop name"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Header logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show cart icon?"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
     }
   ]
 }
