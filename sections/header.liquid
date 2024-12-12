@@ -12,9 +12,6 @@
           >
         </form>
       {% endif %}
-      {% if section.settings.logo %}
-        <img src="{{ section.settings.logo | img_url: 'medium' }}" alt="Logo">
-      {% endif %}
       {% if section.settings.show_shop_name %}
         <h1>{{ section.settings.custom_shop_name | default: shop.name }}</h1>
       {% endif %}
@@ -60,7 +57,8 @@
     {
       "type": "checkbox",
       "id": "show_search",
-      "label": "Show search form?"
+      "label": "Show search form?",
+      "default": true
     },
     {
       "type": "color",
@@ -70,17 +68,20 @@
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text color"
+      "label": "Text color",
+      "default": "#000000"
     },
     {
       "type": "checkbox",
       "id": "show_shop_name",
-      "label": "Show shop name?"
+      "label": "Show shop name?",
+      "default": true
     },
     {
       "type": "text",
       "id": "custom_shop_name",
-      "label": "Custom shop name"
+      "label": "Custom shop name",
+      "default": "My Shopify Store"
     },
     {
       "type": "image_picker",
@@ -90,12 +91,14 @@
     {
       "type": "checkbox",
       "id": "show_cart_icon",
-      "label": "Show cart icon?"
+      "label": "Show cart icon?",
+      "default": true
     },
     {
       "type": "select",
       "id": "header_alignment",
       "label": "Header alignment",
+      "default": "center",
       "options": [
         {
           "value": "left",
