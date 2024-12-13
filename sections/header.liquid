@@ -14,13 +14,23 @@
       <h1 class="header_name">{{ section.settings.custom_shop_name | default: shop.name }}</h1>
 
       <a class="header_cart" href="/cart">
-        <img
-          height="30"
-          width="30"
-          loading="lazy"
-          src="{{ section.settings.cart_logo | image_url | default: 'cart.svg' | asset_url }}"
-          alt="Cart"
-        >
+        {% if section.settings.cart_logo %}
+          <img
+            height="30"
+            width="30"
+            loading="lazy"
+            src="{{ section.settings.cart_logo | image_url }}"
+            alt="Cart"
+          >
+        {% else %}
+          <img
+            height="30"
+            width="30"
+            loading="lazy"
+            src="{{ 'cart.svg' | asset_url }}"
+            alt="Cart"
+          >
+        {% endif %}
 
         {% if cart.item_count > 0 %}
           <span class="cart-item-count">{{ cart.item_count }}</span>
