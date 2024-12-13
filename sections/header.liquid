@@ -1,20 +1,17 @@
 <header class="header">
   <div>
     <div class="header__items">
-      {% if section.settings.show_search %}
-        <form action="/search" method="get" class="search-form ">
-          <input
-            type="search"
-            name="q"
-            placeholder="Search for products..."
-            class="search-nav"
-            id="search-input"
-          >
-        </form>
-      {% endif %}
-      {% if section.settings.show_shop_name %}
-        <h1>{{ section.settings.custom_shop_name | default: shop.name }}</h1>
-      {% endif %}
+      <form action="/search" method="get" class="search-form ">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search for products..."
+          class="search-nav"
+          id="search-input"
+        >
+      </form>
+
+      <h1>{{ section.settings.custom_shop_name | default: shop.name }}</h1>
 
       <a class="header_cart" href="/cart">
         <img
@@ -40,7 +37,8 @@
 <style>
   .header {
     padding: 20px;
-    background: {{ section.settings.bg }}
+    background: {{ section.settings.bg }};
+    justify-content: {{ section.settings.header_alignment }};
   }
 </style>
 <script>
@@ -55,12 +53,6 @@
   "name": "Header",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "show_search",
-      "label": "Show search form?",
-      "default": true
-    },
-    {
       "type": "color",
       "id": "bg",
       "label": "Background color"
@@ -72,28 +64,12 @@
       "default": "#000000"
     },
     {
-      "type": "checkbox",
-      "id": "show_shop_name",
-      "label": "Show shop name?",
-      "default": true
-    },
-    {
       "type": "text",
       "id": "custom_shop_name",
       "label": "Custom shop name",
       "default": "My Shopify Store"
     },
-    {
-      "type": "image_picker",
-      "id": "logo",
-      "label": "Header logo"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_cart_icon",
-      "label": "Show cart icon?",
-      "default": true
-    },
+
     {
       "type": "select",
       "id": "header_alignment",
