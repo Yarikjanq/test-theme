@@ -18,7 +18,7 @@
           height="30"
           width="30"
           loading="lazy"
-          src="{{'cart.svg'  |  asset_url }}"
+          src="{{ section.settings.cart_logo | default: 'cart.svg'  |  asset_url }}"
           alt=""
         >
         {% if cart.item_count > 0 %}
@@ -70,6 +70,11 @@
       "id": "custom_shop_name",
       "label": "Custom shop name",
       "default": "My Shopify Store"
+    },
+    {
+      "type": "image_picker",
+      "id": "cart_logo",
+      "label": "Cart logo"
     },
 
     {
