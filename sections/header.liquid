@@ -11,7 +11,7 @@
         >
       </form>
 
-      <h1>{{ section.settings.custom_shop_name | default: shop.name }}</h1>
+      <h1 class="header_name">{{ section.settings.custom_shop_name | default: shop.name }}</h1>
 
       <a class="header_cart" href="/cart">
         <img
@@ -40,6 +40,9 @@
     background: {{ section.settings.bg }};
     justify-content: {{ section.settings.header_alignment }};
   }
+  .header_name{
+    color: {{ section.settings.text_color }} ;
+  }
 </style>
 <script>
   document.getElementById('search-input').addEventListener('input', function () {
@@ -60,8 +63,7 @@
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text color",
-      "default": "#000000"
+      "label": "Text color"
     },
     {
       "type": "text",
