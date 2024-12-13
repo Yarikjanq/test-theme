@@ -1,0 +1,26 @@
+<section class="card__collection">
+  <div class="card__collection-bg-images">
+    <img
+      height="530px"
+      loading="lazy"
+      class="main-image"
+      width="100%"
+      src="{{ 'shopi-bg.jpg' | asset_url }}"
+      alt="Background"
+    >
+    <div class="card__collection-latest">
+      <h2>Browse our latest products</h2>
+      <a href="/collections/all" class="card__collection-btn">Shop all</a>
+    </div>
+  </div>
+  <div class="card__collection--width">
+    <h1>{{ collections.frontpage.title }}</h1>
+    <ul class="card__container">
+      {% for product in collections.frontpage.products %}
+        <a class="card__link" href="{{ product.url }}">
+          {% render 'product-card', product: product %}
+        </a>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
