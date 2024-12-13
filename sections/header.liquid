@@ -11,16 +11,27 @@
         >
       </form>
 
-      <h1 class="header__name">{{ shop.name }}</h1>
+      <h1 class="header_name">{{ section.settings.custom_shop_name | default: shop.name }}</h1>
 
       <a class="header_cart" href="/cart">
-        <img
-          height="30"
-          width="30"
-          loading="lazy"
-          src="{{'cart.svg'  |  asset_url }}"
-          alt=""
-        >
+        {% if section.settings.cart_logo %}
+          <img
+            height="30"
+            width="30"
+            loading="lazy"
+            src="{{ section.settings.cart_logo | image_url }}"
+            alt="Cart"
+          >
+        {% else %}
+          <img
+            height="30"
+            width="30"
+            loading="lazy"
+            src="{{ 'cart.svg' | asset_url }}"
+            alt="Cart"
+          >
+        {% endif %}
+
         {% if cart.item_count > 0 %}
           <span class="cart-item-count">{{ cart.item_count }}</span>
         {% endif %}
@@ -37,7 +48,11 @@
 <style>
   .header {
     padding: 20px;
-    background: {{ section.settings.bg }}
+    background: {{ section.settings.bg }};
+    justify-content: {{ section.settings.header_alignment }};
+  }
+  .header_name{
+    color: {{ section.settings.text_color }} ;
   }
 </style>
 <script>
@@ -52,14 +67,51 @@
   "name": "Header",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "show_search",
-      "label": "Show search form?"
-    },
-    {
       "type": "color",
       "id": "bg",
       "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "text",
+      "id": "custom_shop_name",
+      "label": "Custom shop name",
+      "default": "My Shopify Store"
+    },
+    {
+      "type": "image_picker",
+      "id": "cart_logo",
+      "label": "Cart logo"
+    },
+
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "header"
     }
   ]
 }

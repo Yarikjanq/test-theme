@@ -64,7 +64,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+form {
   margin: 0;
 }
 
@@ -430,7 +431,40 @@ textarea {
   padding: 40px 20px;
 }
 .collection_container-title {
+}
+.collection_select {
+}
+.collection-sort {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+  justify-content: end;
+}
+.select-container {
+  position: relative;
+  width: 170px;
+}
+.select-container::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: url({{ 'arrow-down-sign-to-navigate.png' | asset_url}});
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.collection_container-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 30px;
+  gap: 30px;
 }
 .custom-pagination-wrapper {
   display: flex;
