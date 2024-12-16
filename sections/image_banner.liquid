@@ -23,3 +23,21 @@
     <a href="/collections/all" class="card__collection-btn">Shop all</a>
   </div>
 </div>
+
+{% schema %}
+{
+  "name": "home-collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "bg_title",
+      "label": "Background title"
+    }
+  ]
+}
+{% endschema %}
