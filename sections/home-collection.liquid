@@ -1,13 +1,24 @@
 <section class="card__collection">
   <div class="card__collection-bg-images">
-    <img
-      height="530px"
-      loading="lazy"
-      class="main-image"
-      width="100%"
-      src="{{ 'shopi-bg.jpg' | asset_url }}"
-      alt="Background"
-    >
+    {% if section.settings.bg_image %}
+      <img
+        height="530px"
+        loading="lazy"
+        class="main-image"
+        width="100%"
+        src="{{ section.settings.bg_image |  image_url }}"
+        alt="Background"
+      >
+    {% else %}
+      <img
+        height="530px"
+        loading="lazy"
+        class="main-image"
+        width="100%"
+        src="{{ 'shopi-bg.jpg' | asset_url }}"
+        alt="Background"
+      >
+    {% endif %}
     <div class="card__collection-latest">
       <h2>Browse our latest products</h2>
       <a href="/collections/all" class="card__collection-btn">Shop all</a>
@@ -24,3 +35,16 @@
     </ul>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "home-collection",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    }
+  ]
+}
+{% endschema %}
