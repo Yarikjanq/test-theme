@@ -20,12 +20,12 @@
       >
     {% endif %}
     <div class="card__collection-latest">
-      <h2>Browse our latest products</h2>
+      <h2>{{ section.settings.bg_title | default: 'Browse our latest products' }}</h2>
       <a href="/collections/all" class="card__collection-btn">Shop all</a>
     </div>
   </div>
   <div class="card__collection--width">
-    <h1>{{ section.settings.bg_title | default: collections.frontpage.title }}</h1>
+    <h1>{{ collections.frontpage.title }}</h1>
     <ul class="card__container">
       {% for product in collections.frontpage.products %}
         <a class="card__link" href="{{ product.url }}">
