@@ -1,0 +1,20 @@
+    {
+
+        "sections": {
+            "home-collection":{
+                "type": "home-collection",   
+                "settings": {}
+            },
+            
+                "image_banner": {
+                    "type": "image_banner",
+                    "settings": {}
+                }
+            
+        },
+        "order": [
+                "image_banner",
+            "home-collection"
+        
+        ]
+    }

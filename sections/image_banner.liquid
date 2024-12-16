@@ -1,0 +1,44 @@
+<div class="card__collection-bg-images">
+  {% if section.settings.bg_image %}
+    <img
+      height="530px"
+      loading="lazy"
+      class="main-image"
+      width="100%"
+      src="{{ section.settings.bg_image |  image_url }}"
+      alt="Background"
+    >
+  {% else %}
+    <img
+      height="530px"
+      loading="lazy"
+      class="main-image"
+      width="100%"
+      src="{{ 'shopi-bg.jpg' | asset_url }}"
+      alt="Background"
+    >
+  {% endif %}
+  <div class="card__collection-latest">
+    <h2>{{ section.settings.bg_title | default: 'Browse our latest products' }}</h2>
+    <a href="/collections/all" class="card__collection-btn">Shop all</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "image-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "bg_title",
+      "label": "Background title",
+      "default": "Browse our latest products"
+    }
+  ]
+}
+{% endschema %}
