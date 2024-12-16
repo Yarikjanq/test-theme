@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="card__collection--width">
-    <h1>{{ collections.frontpage.title }}</h1>
+    <h1>{{ section.settings.bg_image | default: collections.frontpage.title }}</h1>
     <ul class="card__container">
       {% for product in collections.frontpage.products %}
         <a class="card__link" href="{{ product.url }}">
@@ -44,6 +44,11 @@
       "type": "image_picker",
       "id": "bg_image",
       "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "bg_title",
+      "label": "Background title"
     }
   ]
 }
