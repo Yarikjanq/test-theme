@@ -1,7 +1,7 @@
 <header class="header">
   <div>
     <div class="header__items">
-      <form action="/search" method="get" class="search-form ">
+      <form action="/search" method="get" class="search-form">
         <input
           type="search"
           name="q"
@@ -10,32 +10,39 @@
           id="search-input"
         >
       </form>
+      <div class="header_drawer-menu">
+        {% render 'header-drawer' %}
+        <span class="search-icon">
+          {{- 'search-icon.svg' | inline_asset_content -}}
+        </span>
+      </div>
 
       <h1 class="header_name">{{ section.settings.custom_shop_name | default: shop.name }}</h1>
+      <div class="header_cart">
+        <a class="header_cart-cont" href="/cart">
+          {% if section.settings.cart_logo %}
+            <img
+              height="30"
+              width="30"
+              loading="lazy"
+              src="{{ section.settings.cart_logo | image_url }}"
+              alt="Cart"
+            >
+          {% else %}
+            <img
+              height="30"
+              width="30"
+              loading="lazy"
+              src="{{ 'cart.svg' | asset_url }}"
+              alt="Cart"
+            >
+          {% endif %}
 
-      <a class="header_cart" href="/cart">
-        {% if section.settings.cart_logo %}
-          <img
-            height="30"
-            width="30"
-            loading="lazy"
-            src="{{ section.settings.cart_logo | image_url }}"
-            alt="Cart"
-          >
-        {% else %}
-          <img
-            height="30"
-            width="30"
-            loading="lazy"
-            src="{{ 'cart.svg' | asset_url }}"
-            alt="Cart"
-          >
-        {% endif %}
-
-        {% if cart.item_count > 0 %}
-          <span class="cart-item-count">{{ cart.item_count }}</span>
-        {% endif %}
-      </a>
+          {% if cart.item_count > 0 %}
+            <span class="cart-item-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      </div>
     </div>
     <ul class="header__links">
       {% for link in linklists['main-menu'].links %}
@@ -44,7 +51,16 @@
     </ul>
   </div>
 </header>
-
+{% comment %}
+  <div class="header_drawer-bar">
+    <ul class="">
+      {% for link in linklists['main-menu'].links %}
+        <li class="header_drawer-links">{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endcomment %}
+{% comment %} {% render 'header-drawer-links' %} {% endcomment %}
 <style>
   .header {
     padding: 20px;
