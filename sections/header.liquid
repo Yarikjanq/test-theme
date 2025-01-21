@@ -51,16 +51,8 @@
     </ul>
   </div>
 </header>
-{% comment %}
-  <div class="header_drawer-bar">
-    <ul class="">
-      {% for link in linklists['main-menu'].links %}
-        <li class="header_drawer-links">{{ link.title | link_to: link.url }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-{% endcomment %}
-{% comment %} {% render 'header-drawer-links' %} {% endcomment %}
+
+{% render 'header-drawer-links' %}
 <style>
   .header {
     padding: 20px;

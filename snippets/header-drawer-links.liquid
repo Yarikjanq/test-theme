@@ -1,7 +1,10 @@
-<div class="header_drawer-bar">
-  <ul class="">
-    {% for link in linklists['main-menu'].links %}
-      <li class="header_drawer-links">{{ link.title | link_to: link.url }}</li>
-    {% endfor %}
-  </ul>
+<div class="header_drawer-overlay">
+  <div class="header_drawer-bar">
+    <ul class="header_drawer-cont">
+      {% for link in linklists['main-menu'].links %}
+        <li class="header_drawer-links">{{ link.title | link_to: link.url }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="overlay hidden"></div>
 </div>

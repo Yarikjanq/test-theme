@@ -1,0 +1,10 @@
+{
+    "sections": {
+      "section-botik": {
+        "type": "section-botik",
+        "settings": {}
+      }
+    },
+    "order": ["section-botik"]
+  }
+  
