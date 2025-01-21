@@ -1,1 +1,25 @@
-<div>NIAHasd</div>
+<div class="bot-color">{{ section.settings.bot_name }}</div>
+
+<style>
+  .bot-color{
+      color: {{ section.settings.bg }};
+  }
+</style>
+{% schema %}
+{
+  "name": "bot-name",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color"
+    },
+    {
+      "type": "text",
+      "id": "bot_name",
+      "label": "bot_name",
+      "default": "Some text"
+    }
+  ]
+}
+{% endschema %}
