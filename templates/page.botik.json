@@ -8,12 +8,16 @@
  * ------------------------------------------------------------
  */
 {
-    "sections": {
-      "section-botik": {
-        "type": "section-botik",
-        "settings": {}
+  "sections": {
+    "section-botik": {
+      "type": "section-botik",
+      "settings": {
+        "bg": "#bf4f4f",
+        "bot_name": "sdfdsf"
       }
-    },
-    "order": ["section-botik"]
-  }
-  
+    }
+  },
+  "order": [
+    "section-botik"
+  ]
+}
