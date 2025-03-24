@@ -8,20 +8,20 @@
  * ------------------------------------------------------------
  */
 
-    {
+{
 
-        "sections": {
+    "sections": {
 
-            "main-collection-product": {
-                "type": "main-collection-product",
-                "settings": {
+        "air-force": {
+            "type": "air-force",
+            "settings": {
 
-                }
-            },
-
+            }
         },
-        "order": [
-            "main-collection-product",
 
-        ]
-    }
+    },
+    "order": [
+        "air-force",
+
+    ]
+}
