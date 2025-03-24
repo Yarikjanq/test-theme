@@ -1,0 +1,9 @@
+<section>
+  <div class="collection__wrapper">
+    {% for product in collection.products %}
+      <a class="card__link" href="{{ product.url }}">
+        {% render 'product-card', product: product %}
+      </a>
+    {% endfor %}
+  </div>
+</section>
