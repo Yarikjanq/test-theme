@@ -133,6 +133,7 @@ textarea {
   max-width: 300px;
   margin: 0 auto;
   margin-top: 30px;
+  position: relative;
 }
 .header__links a {
   text-decoration: none;
@@ -142,16 +143,14 @@ textarea {
 }
 .header__items {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 }
 .header__items > * {
-  flex: 1;
   text-align: center;
 }
-.header__items form {
-  display: flex;
+.predictive-search__form {
+  position: relative;
 }
 .header_cart-cont {
   display: flex;
@@ -163,6 +162,7 @@ textarea {
 }
 .header_cart {
   display: flex;
+  margin-left: auto;
   justify-content: end;
 }
 .header_drawer-bar {
@@ -546,13 +546,92 @@ textarea {
 .visible {
   display: block;
 }
-
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0s 0.3s;
+  visibility: hidden;
+  position: absolute;
+  padding-top: 20px;
+  z-index: 3;
+  max-width: 140px;
+  width: 100%;
+}
+.dropdown-menu__sublink {
+  background: white;
+  padding: 11px;
+}
+.dropdown-menu__sublink:hover {
+  background: aqua;
+}
+.dropdown-menu.active {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.3s ease, visibility 0s;
+  visibility: visible;
+}
+.dropdown-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: white;
+  padding: 10px 0;
+  border: 2px solid black;
+}
 .header_drawer-menu {
   display: none;
   align-items: center;
   gap: 20px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+.header__search--input {
+  padding: 0 20px;
+  border: 2px solid black;
+  height: 100%;
+}
+predictive-search {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  right: 0;
+  top: 69px;
+  height: 48px;
+  z-index: 9;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+predictive-search > form {
+  height: 100%;
+}
+.predictive-search-products__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 12px;
+}
+.predictive-search-products__link:hover {
+  background: rgba(18, 18, 18, 0.04);
+}
+#predictive-search-results {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 48px;
+  background: white;
+  max-width: 850px;
+  width: 100%;
+  border: 2px solid black;
+  border-top: none;
+}
+.predictive-search-products__list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+summary {
+  position: relative;
+  list-style: none;
 }
 
 /* @media (max-width: 1257px) {
@@ -577,9 +656,9 @@ textarea {
     display: flex;
     opacity: 1;
   }
-  .header__items form {
+  /* .header__items form {
     display: none;
-  }
+  } */
   .header__links {
     display: none;
   }
