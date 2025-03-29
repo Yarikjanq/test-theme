@@ -628,6 +628,7 @@ predictive-search > form {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  padding: 16px 0;
 }
 summary {
   position: relative;
@@ -661,6 +662,9 @@ summary {
   } */
   .header__links {
     display: none;
+  }
+  predictive-search {
+    padding: 0;
   }
 }
 @media screen and (max-width: 600px) {
